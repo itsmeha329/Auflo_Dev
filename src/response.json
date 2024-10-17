@@ -1,0 +1,183 @@
+[
+    {
+      "package_name": "uuid",
+      "package_description": "RFC9562 UUIDs",
+      "package_installed_version": "8.3.2",
+      "package_latest_version": "10.0.0",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/index.js",
+        "cloned_repo/app.js",
+        "cloned_repo/config/passport.js",
+        "cloned_repo/routes/index.js"
+      ]
+    },
+    {
+      "package_name": "apexcharts",
+      "package_description": "A JavaScript Chart Library",
+      "package_installed_version": "3.27.2",
+      "package_latest_version": "3.54.0",
+      "upgrade_available": true,
+      "files_using_package": []
+    },
+    {
+      "package_name": "bcrypt",
+      "package_description": "A bcrypt library for NodeJS.",
+      "package_installed_version": "5.0.1",
+      "package_latest_version": "5.1.1",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/config/passport.js",
+        "cloned_repo/routes/users.js"
+      ]
+    },
+    {
+      "package_name": "chart.js",
+      "package_description": "Simple HTML5 charts using the canvas element.",
+      "package_installed_version": "3.4.1",
+      "package_latest_version": "4.4.4",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/index.js",
+        "cloned_repo/app.js"
+      ]
+    },
+    {
+      "package_name": "connect-flash",
+      "package_description": "Flash message middleware for Connect.",
+      "package_installed_version": "0.1.1",
+      "package_latest_version": "0.1.1",
+      "upgrade_available": false,
+      "files_using_package": [
+        "cloned_repo/app.js"
+      ]
+    },
+    {
+      "package_name": "dotenv",
+      "package_description": "Loads environment variables from .env file",
+      "package_installed_version": "10.0.0",
+      "package_latest_version": "16.4.5",
+      "upgrade_available": true,
+      "files_using_package": []
+    },
+    {
+      "package_name": "ejs",
+      "package_description": "Embedded JavaScript templates",
+      "package_installed_version": "3.1.6",
+      "package_latest_version": "3.1.10",
+      "upgrade_available": true,
+      "files_using_package": []
+    },
+    {
+      "package_name": "express",
+      "package_description": "Fast, unopinionated, minimalist web framework",
+      "package_installed_version": "4.17.1",
+      "package_latest_version": "4.21.0",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/index.js",
+        "cloned_repo/app.js",
+        "cloned_repo/routes/trade.js",
+        "cloned_repo/routes/users.js",
+        "cloned_repo/routes/index.js"
+      ]
+    },
+    {
+      "package_name": "express-session",
+      "package_description": "Simple session middleware for Express",
+      "package_installed_version": "1.17.2",
+      "package_latest_version": "1.18.0",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/app.js"
+      ]
+    },
+    {
+      "package_name": "moment",
+      "package_description": "Parse, validate, manipulate, and display dates",
+      "package_installed_version": "2.29.1",
+      "package_latest_version": "2.30.1",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/index.js",
+        "cloned_repo/app.js",
+        "cloned_repo/config/passport.js",
+        "cloned_repo/routes/index.js"
+      ]
+    },
+    {
+      "package_name": "mongoose",
+      "package_description": "Mongoose MongoDB ODM",
+      "package_installed_version": "6.0.3",
+      "package_latest_version": "8.7.0",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/app.js",
+        "cloned_repo/models/holding.js",
+        "cloned_repo/models/loggedinuser.js",
+        "cloned_repo/models/user.js",
+        "cloned_repo/models/trade.js"
+      ]
+    },
+    {
+      "package_name": "passport",
+      "package_description": "Simple, unobtrusive authentication for Node.js.",
+      "package_installed_version": "0.4.1",
+      "package_latest_version": "0.7.0",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/app.js",
+        "cloned_repo/routes/users.js"
+      ]
+    },
+    {
+      "package_name": "passport-local",
+      "package_description": "Local username and password authentication strategy for Passport.",
+      "package_installed_version": "1.0.0",
+      "package_latest_version": "1.0.0",
+      "upgrade_available": false,
+      "files_using_package": [
+        "cloned_repo/config/passport.js"
+      ]
+    },
+    {
+      "package_name": "pm2",
+      "package_description": "Production process manager for Node.JS applications with a built-in load balancer.",
+      "package_installed_version": "5.1.0",
+      "package_latest_version": "5.4.2",
+      "upgrade_available": true,
+      "files_using_package": []
+    },
+    {
+      "package_name": "socket.io",
+      "package_description": "node.js realtime framework server",
+      "package_installed_version": "4.1.3",
+      "package_latest_version": "4.8.0",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/index.js",
+        "cloned_repo/app.js"
+      ]
+    },
+    {
+      "package_name": "toastify-js",
+      "package_description": "Toastify is a lightweight, vanilla JS toast notification library.",
+      "package_installed_version": "1.11.1",
+      "package_latest_version": "1.12.0",
+      "upgrade_available": true,
+      "files_using_package": []
+    },
+    {
+      "package_name": "yahoo-finance2",
+      "package_description": "JS API for Yahoo Finance",
+      "package_installed_version": "1.14.0",
+      "package_latest_version": "2.13.2",
+      "upgrade_available": true,
+      "files_using_package": [
+        "cloned_repo/index.js",
+        "cloned_repo/app.js",
+        "cloned_repo/config/passport.js",
+        "cloned_repo/routes/index.js"
+      ]
+    }
+  ]

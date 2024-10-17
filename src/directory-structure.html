@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repository Directory Structure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .tree-structure .tree-item {
+            transition: all 0.3s ease;
+        }
+        .tree-structure .tree-item:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-800 to-gray-900 min-h-screen">
+    <div class="max-w-7xl mx-auto p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold text-white">Directory Structure</h1>
+            <div class="space-x-4">
+                <button onclick="navigateTo('index.html')" class="bg-white text-gray-800 font-bold py-2 px-4 rounded transition duration-150 ease-in-out hover:bg-gray-100">
+                    View Packages
+                </button>
+                <!--<button onclick="navigateTo('index.html')" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition duration-150 ease-in-out">
+                    Back to Selection
+                </button>-->
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl p-6">
+            <div id="directoryStructure" class="font-mono text-sm tree-structure">
+                <!-- Directory structure will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function navigateTo(page) {
+            const repoUrl = getUrlParameter('repo');
+            if (page === 'index.html') {
+                window.location.href = `${page}?state=selection&repo=${encodeURIComponent(repoUrl)}`;
+            } else {
+                window.location.href = `${page}?repo=${encodeURIComponent(repoUrl)}`;
+            }
+        }
+
+        const mockStructure = {
+            name: 'project-root',
+            type: 'directory',
+            children: [
+                {
+                    name: 'src',
+                    type: 'directory',
+                    children: [
+                        {
+                            name: 'components',
+                            type: 'directory',
+                            children: [
+                                { name: 'Button.js', type: 'file' },
+                                { name: 'Header.js', type: 'file' },
+                                { name: 'Footer.js', type: 'file' }
+                            ]
+                        },
+                        {
+                            name: 'pages',
+                            type: 'directory',
+                            children: [
+                                { name: 'Home.js', type: 'file' },
+                                { name: 'About.js', type: 'file' },
+                                { name: 'Contact.js', type: 'file' }
+                            ]
+                        },
+                        { name: 'App.js', type: 'file' },
+                        { name: 'index.js', type: 'file' }
+                    ]
+                },
+                {
+                    name: 'public',
+                    type: 'directory',
+                    children: [
+                        { name: 'index.html', type: 'file' },
+                        { name: 'favicon.ico', type: 'file' }
+                    ]
+                },
+                { name: 'package.json', type: 'file' },
+                { name: 'README.md', type: 'file' },
+                { name: '.gitignore', type: 'file' }
+            ]
+        };
+
+        function renderDirectoryStructure(item, level = 0) {
+            const indent = level * 20;
+            let html = `<div class="tree-item py-1 px-2 rounded" style="margin-left: ${indent}px">`;
+
+            if (item.type === 'directory') {
+                html += `<span class="text-blue-600">📁 ${item.name}/</span>`;
+                if (item.children) {
+                    item.children.forEach(child => {
+                        html += renderDirectoryStructure(child, level + 1);
+                    });
+                }
+            } else {
+                html += `<span class="text-gray-600">📄 ${item.name}</span>`;
+            }
+
+            html += '</div>';
+            return html;
+        }
+
+        function displayDirectoryStructure() {
+            const repoUrl = getUrlParameter('repo');
+            if (!repoUrl) {
+                document.getElementById('directoryStructure').innerHTML = 'No repository URL provided';
+                return;
+            }
+
+            document.getElementById('directoryStructure').innerHTML = renderDirectoryStructure(mockStructure);
+        }
+
+        displayDirectoryStructure();
+
+        // Handle browser back button
+        window.onpopstate = function(event) {
+            const repoUrl = getUrlParameter('repo');
+            if (repoUrl) {
+                window.location.href = `index.html?state=selection&repo=${encodeURIComponent(repoUrl)}`;
+            }
+        };
+    </script>
+</body>
+</html>

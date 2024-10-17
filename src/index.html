@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .scrollable-cell {
+            height: 80px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+        }
+        .scrollable-cell::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scrollable-cell::-webkit-scrollbar-thumb {
+            background-color: rgba(156, 163, 175, 0.5);
+            border-radius: 3px;
+        }
+        tr {
+            height: 100px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <link href="./output.css" rel="stylesheet">
+    <div class="max-w-7xl mx-auto">
+        <table class="w-full bg-white shadow-lg rounded-lg overflow-hidden">
+            <thead>
+                <tr class="bg-gray-50 text-gray-700 uppercase text-base leading-normal">
+                    <th class="py-4 px-6 text-left">Package Name</th>
+                    <th class="py-4 px-6 text-left">Description</th>
+                    <th class="py-4 px-6 text-center">Installed</th>
+                    <th class="py-4 px-6 text-center">Latest</th>
+                    <th class="py-4 px-6 text-center">Upgrade</th>
+                    <th class="py-4 px-6 text-left">Files Using Package</th>
+                    <th class="py-4 px-6 text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody" class="text-gray-600 text-base">
+                <!-- Table rows will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function fetchAndPopulateTable() {
+            try {
+                const response = await fetch('response.json');
+                const data = await response.json();
+                
+                const tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = data.map((row, index) => `
+                    <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-150">
+                        <td class="py-4 px-6 text-left">
+                            <span class="font-bold text-gray-800">${row.package_name}</span>
+                        </td>
+                        <td class="py-4 px-6 text-left">
+                            <div class="scrollable-cell">
+                                <p>${row.package_description}</p>
+                            </div>
+                        </td>
+                        <td class="py-4 px-6 text-center">
+                            <span class="font-bold">${row.package_installed_version}</span>
+                        </td>
+                        <td class="py-4 px-6 text-center">
+                            <span class="font-bold">${row.package_latest_version}</span>
+                        </td>
+                        <td class="py-4 px-6 text-center">
+                            <span class="${row.upgrade_available ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} py-1 px-3 rounded-full text-sm font-medium">
+                                ${row.upgrade_available ? 'Yes' : 'No'}
+                            </span>
+                        </td>
+                        <td class="py-4 px-6 text-left">
+                            <div class="scrollable-cell">
+                                <ul class="list-disc list-inside">
+                                    ${row.files_using_package.map(file => `<li>${file}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="py-4 px-6 text-center">
+                            <button onclick="handleSubmit('${row.package_name}')" class="bg-gray-800 hover:bg-gray-700 text-white text-sm font-bold py-2 px-4 rounded transition duration-150 ease-in-out">
+                                Submit
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function handleSubmit(packageName) {
+            alert(`Submit button clicked for package: ${packageName}`);
+            // Add your submit logic here
+        }
+
+        fetchAndPopulateTable();
+    </script>
+</body>
+</html>
